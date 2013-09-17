@@ -1,0 +1,107 @@
+/*****PART ONE*****/
+
+function getClasses(elem){
+  var cname = document.getElementById(elem).className;
+    var array = new Array();
+    array = cname.split(" ");
+ document.write(array);
+}
+
+
+
+  /*****PART TWO*****/
+
+function addClass(elem, className){
+    var e = document.getElementById(elem).className;
+    var array = new Array();
+    array = e.split(" ");
+    var boolean = false; 
+   
+for(var i=0; i<array.length; i++){
+
+      if(array[i] == className){
+        document.write(className + " exist.");
+       
+       }
+       else{ 
+          boolean = true;
+       }
+}
+
+if (boolean == true){
+var test = document.getElementById(elem);
+test.className = test.className + " " + className;
+
+}
+}
+
+
+
+
+/*****PART THREE*****/
+
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+function validateForm(){
+
+ var addElem = new Array();
+ var x=document.getElementById("forms");
+ var boolean = true;
+ var count= 0;
+
+ //var para= document.createElement("p");
+
+ for(var i = 0; i < x.length; i++){
+
+   if(x.elements[i].value.length == 0){
+    addElem[count]=x.elements[i].name;
+    count++;
+     x.elements[i].style.backgroundColor='red';
+   }else{
+     boolean = true;
+   }
+   boolean = false;
+ }
+
+if (boolean == false){
+
+ for(var y = 0; y < addElem.length; y++){
+    
+   var txt = document.createTextNode(" Please enter " + addElem[y] + "." );
+    
+    x.parentNode.insertBefore(txt,x);
+    
+  } 
+
+return false;
+
+}else if (boolean ==true){
+
+return true;
+}
+
+
+
+}
+</script>
+</head>
+
+<body id="bodeh">
+
+<form name="myForm" id="forms"   action="demo_form.html" onsubmit="return validateForm()" method="post">
+    User Name:<input id="test" type="text" name="name" background-color="black"> <br/>
+    Email<input type="email" name="email"><br/>
+    Password:<input type="password" name="password"><br/>
+    Confirm Password:<input type="password" name="passwordtwo"><br/>
+    <input type="submit" value="Submit">
+</forms>
+
+</body>
+
+</html>
+
+
+

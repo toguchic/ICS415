@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function hasjs(){
+	 var demo = $("input").val(); 
+	 $.get(demo, function(html){
+		 var webpage = $(html);
+		 var x = webpage.find("script");
+		 
+			for(var i=0;i<x.length;i++){
+				  var sources = x[i].src;
+				  $("#findjs").after(sources);
+
+			 }
+	 });		 
+}
+
+function load(){
+ 
+ var demo = $("input").val(); 
+ $.get(demo, function(html){
+	 var webpage = $(html);
+	 var x = webpage.find("*");
+	 
+	for(var i=0;i<x.length;i++){
+		  var tagname = x[i].tagName;
+          var findtags = webpage.find(tagname);
+          $("#findjs").after("| "+tagname+" | "+findtags.length+" |</br>");
+	 }
+	 
+ });
+}
+
+
+</script>
+</head>
+
+<body>
+Enter URL: <input type="url" id="page">
+<button type="submit" name="submit" onclick="load()" id="tags">Submit</button>
+<button type="submit" name="contain" onclick="hasjs()" id="findjs">External JS<br></button>
+
+
+<div>
+
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+</body>
+</html>
+
+
+
